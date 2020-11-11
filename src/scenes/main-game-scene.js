@@ -1,41 +1,31 @@
-import { Scene } from "phaser"
+import { Scene } from 'phaser';
 
-export class MainGameScene extends Scene {
+export default class MainGameScene extends Scene {
+  preload() {
+    this.load.setBaseURL('http://labs.phaser.io');
 
-    constructor() {
-        super();
-    }
+    this.load.image('sky', 'assets/skies/space3.png');
+    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
+    this.load.image('red', 'assets/particles/red.png');
+  }
 
-    preload() {
-        this.load.setBaseURL('http://labs.phaser.io');
+  create() {
+    this.add.image(400, 300, 'sky');
 
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
-    }
+    const particles = this.add.particles('red');
 
-    create() {
-        this.add.image(400, 300, 'sky');
+    const emitter = particles.createEmitter({
+      speed: 100,
+      scale: { start: 1, end: 0 },
+      blendMode: 'ADD',
+    });
 
-        var particles = this.add.particles('red');
+    const logo = this.physics.add.image(400, 100, 'logo');
 
-        var emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        });
+    logo.setVelocity(100, 200);
+    logo.setBounce(1, 1);
+    logo.setCollideWorldBounds(true);
 
-        var logo = this.physics.add.image(400, 100, 'logo');
-
-        logo.setVelocity(100, 200);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
-
-        emitter.startFollow(logo);
-    }
-
-    update(time, delta) {
-        
-    }
-
+    emitter.startFollow(logo);
+  }
 }

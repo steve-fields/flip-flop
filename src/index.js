@@ -1,16 +1,18 @@
-const { MainGameScene } = require("./scenes/main-game-scene");
+import { Game, Phaser } from 'phaser';
+import MainGameScene from './scenes/main-game-scene';
 
-var config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 200 }
-        }
+const config = {
+  type: Phaser.AUTO,
+  width: 800,
+  height: 600,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 200 },
     },
-    scene: new MainGameScene(),
-}
+  },
+  scene: new MainGameScene(),
+};
 
-var game = new Phaser.Game(config);
+// eslint-disable-next-line no-unused-vars
+const game = new Game(config);
