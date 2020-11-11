@@ -1,8 +1,8 @@
-import { Game, Phaser } from 'phaser';
+import { Game, AUTO } from 'phaser';
 import MainGameScene from './scenes/main-game-scene';
 
 const config = {
-  type: Phaser.AUTO,
+  type: AUTO,
   width: 800,
   height: 600,
   physics: {
