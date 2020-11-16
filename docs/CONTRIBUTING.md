@@ -38,6 +38,16 @@ If this is a new branch that hasn't been pushed to:
 
 `git push -u origin <name_of_branch>`
 
+### Pull
+
+To pull changes for a branch:
+
+`git pull`
+
+To pull branches from remote:
+
+`git fetch`
+
 ## Workflow
 
 1. Create a new branch
