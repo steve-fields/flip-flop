@@ -40,11 +40,11 @@ If this is a new branch that hasn't been pushed to:
 
 ### Pull
 
-To pull changes for a branch:
+To pull changes for a your current branch:
 
 `git pull`
 
-To pull branches from remote:
+To update your local repo to have new remote branches reflected locally:
 
 `git fetch`
 
