@@ -18,7 +18,6 @@ export default class MainGameScene extends Scene {
       blendMode: 'ADD',
     });
 
-
     const earth = this.physics.add.image(400, 100, 'earth');
 
     earth.setScale(1.2);
