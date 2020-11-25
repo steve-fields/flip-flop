@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import { createEarth, createEnemy } from '../game-objects/game-object-factory';
 
 export default class MainGameScene extends Scene {
   preload() {
@@ -18,12 +19,13 @@ export default class MainGameScene extends Scene {
       blendMode: 'ADD',
     });
 
-    const earth = this.physics.add.image(400, 100, 'earth');
+    const earth = createEarth(this); // this = the MainGameScene object
+    const enemies = createEnemy(this);
 
-    earth.setScale(1.2);
-    earth.setVelocity(100, 200);
-    earth.setBounce(1, 1);
-    earth.setCollideWorldBounds(true);
+    this.physics.add.collider(earth, enemies, (earthCollision, enemyCollision) => {
+      enemyCollision.destroy();
+      // This can be used for HP when enemy hits earth
+    });
 
     emitter.startFollow(earth);
   }
